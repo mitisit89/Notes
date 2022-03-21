@@ -1,9 +1,10 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.views import generic
+from .models import NoteForm
+class Index(generic.TemplateView):
+    template_name="notes/index.html"
 
+class CreateNoteView(generic.FormView):
+    template_name='notes/create_form.html'
+    form_class=NoteForm
+    success_url = '/notes'
 
-def index(request) -> HttpResponse:
-    return render(request, "notes/index.html")
-
-
-def create_note(request) -> HttpResponse:
-    return render (request, "notes/create_form.html")
