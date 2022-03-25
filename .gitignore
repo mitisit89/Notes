@@ -1,4 +1,4 @@
 envNotes
 db.sqlite3
 __pycache__/
- 
+core/notes/migrations/
