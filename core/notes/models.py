@@ -14,5 +14,5 @@ class Note(models.Model):
     body = models.TextField(blank=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
 
-
-
+    def __str__(self):
+        return self.title
