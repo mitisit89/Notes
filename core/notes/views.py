@@ -4,9 +4,10 @@ from .models import Note
 
 
 class IndexView(generic.ListView):
-    model=Note
-    template_name='notes/index.html'
-    context_object_name='notes_list'
+    model = Note
+    template_name = "notes/index.html"
+    context_object_name = "notes_list"
+
 
 class CreateNoteView(generic.CreateView):
     model = Note
