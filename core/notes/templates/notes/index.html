@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {%block content%}
-{% for note in object_list%}
+{% for note in notes_list %}
 <div class="col-sm-6 offset-md-2">
   {% include 'notes/includes/card.html'%}
 </div>
