@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+
+{%block title%}
+Sign in
+{%endblock%}
+
+{%block content%}
+<form method='POST'>
+    {{csrf_token}}
+    <div class='form-group'>
+        {{form}}  
+    </div>
+    <button type="sumbmit">Sign in</button>
+</form>
+
+{%endblock%}
