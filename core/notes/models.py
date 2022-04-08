@@ -9,10 +9,6 @@ def create_slug(s):
     return f"{slug}-{str(int(time()))}"
 
 
-# Create your models here.
-
-
-
 class Note(models.Model):
     title = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
