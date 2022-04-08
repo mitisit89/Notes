@@ -1,14 +1,24 @@
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from .forms import RegisterForm,AuthForm 
 
 
 def sing_in(response):
     if response.method == "POST":
-        form = UserCreationForm(response.POST)
-        if form.is_valid:
+        form = RegisterForm(response.POST)
+        if form.is_valid():
             form.save()
         return redirect("/notes")
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(response, "signin.html", {"form": form})
+
+
+def login(response):
+    if response.method == "POST":
+        form=AuthForm(response.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/notes')
+    else:
+        form=AuthForm()
+    return render(response,'login.html',{'form':form})

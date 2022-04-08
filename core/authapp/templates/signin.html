@@ -1,16 +1,16 @@
 {%extends "base.html"%}
-
+{% load crispy_forms_tags %}
 {%block title%}
 Sign in
 {%endblock%}
 
 {%block content%}
 <form method='POST'>
-    {{csrf_token}}
+    {%csrf_token%}
     <div class='form-group'>
-        {{form}}  
+        {{ form|crispy }} 
     </div>
-    <button type="sumbmit">Sign in</button>
+    <button type="sumbmit" class="btn btn-success">Sign in</button>
 </form>
 
 {%endblock%}
