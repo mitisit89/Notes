@@ -14,3 +14,14 @@ class CreateNoteView(generic.CreateView):
     template_name = "notes/create_form.html"
     fields = ["title", "body"]
     success_url = reverse_lazy("index")
+
+
+class UpdateNoteView(generic.UpdateView):
+    model = Note
+    fields = ["title", "body"]
+
+
+class DeleteNoteView(generic.DeleteView):
+    model = Note
+    template_name = "notes/delete.html"
+    success_url = reverse_lazy("index")

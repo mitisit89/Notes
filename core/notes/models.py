@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 from time import time
 
 
@@ -14,6 +15,7 @@ class Note(models.Model):
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = models.TextField(blank=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
     def save(self, *args, **kwargs):
         if not self.id:
