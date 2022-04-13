@@ -13,7 +13,7 @@ class IndexView(LoginRequiredMixin, generic.ListView):
 
 class CreateNoteView(LoginRequiredMixin, generic.CreateView):
     model = Note
-    login_url="login"
+    login_url = "login"
     template_name = "notes/create_form.html"
     fields = ["title", "body"]
     success_url = reverse_lazy("index")
@@ -21,12 +21,12 @@ class CreateNoteView(LoginRequiredMixin, generic.CreateView):
 
 class UpdateNoteView(LoginRequiredMixin, generic.UpdateView):
     model = Note
-    login_url="login"
+    login_url = "login"
     fields = ["title", "body"]
 
 
 class DeleteNoteView(LoginRequiredMixin, generic.DeleteView):
     model = Note
-    login_url="login"
+    login_url = "login"
     template_name = "notes/delete.html"
     success_url = reverse_lazy("index")

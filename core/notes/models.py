@@ -14,7 +14,7 @@ class Note(models.Model):
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = models.TextField(blank=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         if not self.id:
