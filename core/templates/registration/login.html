@@ -1,3 +1,4 @@
+# login.html
 {% extends "base.html" %}
 
 {% block title %}
@@ -10,7 +11,7 @@ Login Here
      <form method="post" class="from-group">
 	{% csrf_token %}
 	{{form|crispy}}
-	<p>Don't have an accoount? Create one <a href="/sing_in">here</a></p>
+	<p>Don't have an accoount? Create one <a href="/register">here</a></p>
 	<button type="submit" class="btn btn-success">Login</button>	
     </form>
 {% endblock %}
