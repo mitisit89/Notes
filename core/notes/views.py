@@ -15,8 +15,18 @@ class CreateNoteView(LoginRequiredMixin, generic.CreateView):
     model = Note
     login_url = "login"
     template_name = "notes/create_form.html"
-    fields = ["title", "body"]
+    fields = [
+        "title",
+        "body",
+    ]
     success_url = reverse_lazy("index")
+
+    def form_valid(self, form):
+        app_model = form.save(commit=False)
+        app_model.created_by = self.request.user
+        # app_model.user = User.objects.get(user=self.request.user) # Or explicit model 
+        form.save()
+        return super().form_valid(form)
 
 
 class UpdateNoteView(LoginRequiredMixin, generic.UpdateView):
