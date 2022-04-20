@@ -22,9 +22,8 @@ class CreateNoteView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("index")
 
     def form_valid(self, form):
-        app_model = form.save(commit=False)
-        app_model.created_by = self.request.user
-        # app_model.user = User.objects.get(user=self.request.user) # Or explicit model 
+        add_user_ref = form.save(commit=False)
+        add_user_ref.created_by = self.request.user
         form.save()
         return super().form_valid(form)
 
@@ -33,6 +32,12 @@ class UpdateNoteView(LoginRequiredMixin, generic.UpdateView):
     model = Note
     login_url = "login"
     fields = ["title", "body"]
+
+    def form_valid(self, form):
+        add_user_ref = form.save(commit=False)
+        add_user_ref.created_by = self.request.user
+        form.save()
+        return super().form_valid(form)
 
 
 class DeleteNoteView(LoginRequiredMixin, generic.DeleteView):
