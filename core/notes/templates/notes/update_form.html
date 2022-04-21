@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{%block title %}
+Post-Update-'{{note.title}}'
+{%endblock%}
+ {%block content%}
+   <form action="{{post.get_update_url}}" method="post">
+                {%csrf_token%}
+                {% for feild in form%}
+                <div class="form-group">
+                    {%if feild.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {{feild.errors}}
+                    </div>
+                    {%endif%}
+
+                    {{feild.label}}
+                    {{feild}}
+
+                </div>
+                {%endfor%}
+                <button type='submit' class="btn btn-primary">Update</button>
+            </form>
+
+{%endblock%}

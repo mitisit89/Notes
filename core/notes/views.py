@@ -31,14 +31,15 @@ class CreateNoteView(LoginRequiredMixin, generic.CreateView):
 class UpdateNoteView(LoginRequiredMixin, generic.UpdateView):
     model = Note
     login_url = "login"
+    template_name='notes/update_form.html'
     fields = ["title", "body"]
-
-    def form_valid(self, form):
-        add_user_ref = form.save(commit=False)
-        add_user_ref.created_by = self.request.user
-        form.save()
-        return super().form_valid(form)
-
+    success_url=reverse_lazy('index')
+    # def form_valid(self, form):
+    #     add_user_ref = form.save(commit=False)
+    #     add_user_ref.created_by = self.request.user
+    #     form.save()
+    #     return super().form_valid(form)
+    #
 
 class DeleteNoteView(LoginRequiredMixin, generic.DeleteView):
     model = Note
